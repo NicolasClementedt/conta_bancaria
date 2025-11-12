@@ -1,5 +1,5 @@
 import { Conta } from "../model/Conta";
-import { ContaRepository } from "../repository/ContaRepository";
+import { ContaRepository } from "../repository/IContaRepository";
 import { colors } from "../util/Colors";
 
 export class ContaController implements ContaRepository{
@@ -90,15 +90,11 @@ atualizar(conta: Conta): void {
         if (contaOrigem != null && contaDestino != null) {
             if (contaOrigem.sacar(valor) == true) {
                 contaDestino.depositar(valor);
-                console.log(colors.fg.green, "\nA Transferência da Conta numero: " + numeroOrigem +
-                    " para a Conta numero: " + numeroDestino + " foi efetuada com sucesso!",
-                    colors.reset);
+                console.log(colors.fg.green, "\nA Transferência da Conta numero: " + numeroOrigem + " para a Conta numero: " + numeroDestino + " foi efetuada com sucesso!", colors.reset);
             }
 
         } else
-            console.log(colors.fg.red, "\nA Conta numero: " + numeroOrigem +
-                " e/ou a Conta numero: " + numeroDestino + " não foram encontradas!",
-                colors.reset);
+            console.log(colors.fg.red, "\nA Conta numero: " + numeroOrigem + " e/ou a Conta numero: " + numeroDestino + " não foram encontradas!", colors.reset);
     }
 
    
